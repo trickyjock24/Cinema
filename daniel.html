@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo-kjk ens wat ik kon!</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="daniel.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <a-assets-item id="person-obj" src="src/Person.mtl"></a-assets-item>
+        <a-assets-item id="person-mtl" src="src/Person.obj"></a-assets-item>
+      </a-assets>
+      <a-camera id="js--camera" position="2 1.8 1">
+        <a-cylinder id="js--pringles" src="src/pringles.jpg" position="1 -1 -1.5" radius="0.2" height="0.65" opacity="0"></a-cylinder>
+        <a-cylinder id="js--redbull" src="src/redbull.jpg" rotation="0 75 0" position="1 -1 -1.5" radius="0.2" height="0.65" opacity="0"></a-cylinder>
+        <a-cylinder id="js--cola" src="src/coca.jpg" rotation="0 140 0" position="1 -1 -1.5" radius="0.2" height="0.65" opacity="0"></a-cylinder>
+        <a-box id="js--dorito" src="src/doritos.jpg" rotation="0 45 -45" position="1 -1 -1.5" depth="0.5" width="0.5" height="0.75" opacity="0"></a-box>
+
+        <a-entity
+          id="cursor"
+          animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+          animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 1500; from: 1 1 1; to: 0.1 0.1 0.1"
+          animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+          raycaster=" objects: .js--click"
+          cursor="fuse: true; fuseTimeout: 750"
+          position="0 0 -1"
+          geometry="primitive: ring; radiusInner: 0.02; radiusOuter: 0.03"
+          material="color: black; shader: flat"></a-entity>
+        <a-entity
+          id="raycast-cursor"
+          cursor="fuse: true; fuseTimeout: 300"
+          position="0 0 -1"
+          raycaster="objects: .js--place"
+        ></a-entity>
+      </a-camera>
+      
+      <a-sound id="js--kalmmusic" src="src: url(kalm.mp3)" maxDistance="7" autoplay="true" position="0 1.8 -5" volume="0"></a-sound>
+      
+      <!--Muren & plafon-->
+      <a-plane src="src/floor.jpg" rotation="-90 0 0" position="-3 0 -5" width="24" height="24"></a-plane>
+      <a-plane src="src/walls.jpg" rotation="180 0 0" position="-1 2.5 3" width="10" height="5"></a-plane>
+      <a-plane src="src/walls.jpg" rotation="0 0 0" position="-2.5 2.5 -13" width="13" height="5"></a-plane>
+      <a-plane src="src/walls.jpg" rotation="0 90 0" position="-5 2.5 -1" width="8" height="5"></a-plane>
+      <a-plane src="src/walls.jpg" rotation="180 0 0" position="-7 2.5 -5" width="4" height="5"></a-plane>
+      <a-plane src="src/walls.jpg" rotation="0 90 0" position="-9 2.5 -9" width="8" height="5"></a-plane>
+      <a-plane src="src/walls.jpg" rotation="0 -90 0" position="4 2.5 -5" width="16" height="5"></a-plane>
+      <a-box class="js--knop js--click" id="js--knop" color="pink" position="3 4 -6"></a-box>
+      <a-plane src="src/plafond.jpg" rotation="90 0 0" position="-3 5 -5" width="16" height="24"></a-plane>
+
+      <!--Toonbank-->
+      <a-box color="white" rotation="-90 0 0" position="-5 1 -9" depth="0.25" width="1.5" height="9"></a-box>
+      <a-box src="src/wood.jpg" color="yellow" rotation="0 0 -15" position="-5 0.5 -9" depth="8.9" width="1" height="1"></a-box>
+      <a-box color="black" rotation="-90 0 0" position="-8.5 2 -9" depth="0.25" width="1" height="8"></a-box>
+      <a-box color="black" rotation="-90 0 0" position="-8.5 3.5 -9" depth="0.25" width="1" height="8"></a-box>
+      <a-entity rotation="0 -200 0" position="-8.5 4 -11.5">
+        <a-cylinder onclick="redbull()" class="js--eten js--click" src="src/redbull.jpg" position="-0.2 0 -0.4" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="redbull()" class="js--eten js--click" src="src/redbull.jpg" position="-0.2 0 0" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="redbull()" class="js--eten js--click" src="src/redbull.jpg" position="-0.2 0 0.4" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="redbull()" class="js--eten js--click" src="src/redbull.jpg" position="0.2 0 -0.4" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="redbull()" class="js--eten js--click" src="src/redbull.jpg" position="0.2 0 0" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="redbull()" class="js--eten js--click" src="src/redbull.jpg" position="0.2 0 0.4" radius="0.2" height="0.65"></a-cylinder>
+      </a-entity>
+      <a-entity class="js--eten js--click" rotation="0 30 0" position="-8.75 2.45 -6">
+        <a-cylinder onclick="cola()" class="js--eten js--click" src="src/coca.jpg" position="-0.2 0 -0.4" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="cola()" class="js--eten js--click" src="src/coca.jpg" position="-0.2 0 0" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="cola()" class="js--eten js--click" src="src/coca.jpg" position="-0.2 0 0.4" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="cola()" class="js--eten js--click" src="src/coca.jpg" position="0.2 0 -0.4" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="cola()" class="js--eten js--click" src="src/coca.jpg" position="0.2 0 0" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="cola()" class="js--eten js--click" src="src/coca.jpg" position="0.2 0 0.4" radius="0.2" height="0.65"></a-cylinder>
+      </a-entity>
+      <a-entity class="js--eten js--click" rotation="0 -190 0" position="-8.5 2.35 -11">
+        <a-cylinder onclick="pringles()" class="js--eten js--click" src="src/pringles.jpg" position="0 0 -0.4" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="pringles()" class="js--eten js--click" src="src/pringles.jpg" position="0 0 0" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="pringles()" class="js--eten js--click" src="src/pringles.jpg" position="0 0 0.4" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="pringles()" class="js--eten js--click" src="src/pringles.jpg" position="0 0.65 -0.2" radius="0.2" height="0.65"></a-cylinder>
+        <a-cylinder onclick="pringles()" class="js--eten js--click" src="src/pringles.jpg" position="0 0.65 0.2" radius="0.2" height="0.65"></a-cylinder>
+      </a-entity>
+      <a-box onclick="dorito()" class="js--eten js--click" src="src/doritos.jpg" rotation="0 0 0" position="-8.5 4 -7.5" depth="1.5" width="0.5" height="0.75"></a-box>
+
+      <!--kassa-->
+      <a-text id="js--tekst" color="white" rotation="35 90 0" position="-6 2.75 -9" align="center" width="3" heigth="2" color="black" value="Hallo, wat zou u graag willen? Kijk naar het product wat u graag zou willen."></a-text>
+      <a-box color="cyan" position="-6 2.75 -9" rotation="35 90 0" width="3" height="0.35" depth="0.05" opacity="0.3"></a-box>
+
+      <!--teleporters-->
+      <a-cylinder class="js--place js--click" position="2 0 1" color="#750288"></a-cylinder>
+      <a-entity position="2 0 1">
+        <a-box class="js--curtain js--knop js--click" color="pink" position="0 5 0" opacity="0"></a-box>
+        <a-plane class="js--curtain" rotation="0 90 0" position="-1.5 5 0" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 -90 0" position="1.5 5 0" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 180 0" position="0 5 1.5" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 0 0" position="0 5 -1.5" width="3" height="10" opacity="0"></a-plane>
+        <a-text class="js--curtain" color="black" position="0 2 -1.5" opacity="0" align="center" width="2.5" value="Als je tot rust bent gekomen, kijk dan naar boven."></a-text>
+      </a-entity>
+      <a-cylinder class="js--place js--click" position="1 0 -4" color="#750288"></a-cylinder>
+      <a-entity position="1 0 -4">
+        <a-box class="js--curtain js--knop js--click" color="pink" position="0 5 0" opacity="0"></a-box>
+        <a-plane class="js--curtain" rotation="0 90 0" position="-1.5 5 0" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 -90 0" position="1.5 5 0" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 180 0" position="0 5 1.5" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 0 0" position="0 5 -1.5" width="3" height="10" opacity="0"></a-plane>
+        <a-text class="js--curtain" color="black" position="0 2 -1.5" opacity="0" align="center" width="2.5" value="Als je tot rust bent gekomen, kijk dan naar boven."></a-text>
+      </a-entity>
+      <a-cylinder class="js--place js--click" position="-3 0 -9" color="#750288"></a-cylinder>
+      <a-entity position="-3 0 -9">
+        <a-box class="js--curtain js--knop js--click" color="pink" position="0 5 0" opacity="0"></a-box>
+        <a-plane class="js--curtain" rotation="0 90 0" position="-1.5 5 0" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 -90 0" position="1.5 5 0" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 180 0" position="0 5 1.5" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 0 0" position="0 5 -1.5" width="3" height="10" opacity="0"></a-plane>
+        <a-text class="js--curtain" color="black" position="0 2 -1.5" opacity="0" align="center" width="2.5" value="Als je tot rust bent gekomen, kijk dan naar boven."></a-text>
+      </a-entity>
+      <a-cylinder id="js--end" onclick="endCheck()" class="js--place js--click" position="1.5 0 -11" color="red"></a-cylinder>
+      <a-entity position="1.5 0 -11">
+        <a-box class="js--curtain js--knop js--click" color="pink" position="0 5 0" opacity="0"></a-box>
+        <a-plane class="js--curtain" rotation="0 90 0" position="-1.5 5 0" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 -90 0" position="1.5 5 0" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 180 0" position="0 5 1.5" width="3" height="10" opacity="0"></a-plane>
+        <a-plane class="js--curtain" rotation="0 0 0" position="0 5 -1.5" width="3" height="10" opacity="0"></a-plane>
+        <a-text class="js--curtain" color="black" position="0 2 -1.5" opacity="0" align="center" width="2.5" value="Als je tot rust bent gekomen, kijk dan naar boven."></a-text>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
