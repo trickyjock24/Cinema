@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bioscoopzaal</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="olaf.js"></script>
+</head>
+<body>
+    <a-scene>
+        <a-camera 
+        id="camera"
+        position="-7 9 30">
+            <a-entity 
+            id="cursor"
+            animation__click="property: scale; startEvents: click; easing: easeInCubic; dur: 150; from: 0.1 0.1 0.1; to: 1 1 1"
+            animation__fusing="property: scale; startEvents: fusing; easing: easeInCubic; dur: 900; from: 1 1 1; to: 0.1 0.1 0.1"
+            animation__mouseleave="property: scale; startEvents: mouseleave; easing: easeInCubic; dur: 500; to: 1 1 1"
+            raycaster="objects: .js--clickable, .js--camera"            
+            cursor="fuse: true; fuseTimeout: 900"
+            position="0 0 -0.1"
+            geometry="primitive: ring; radiusInner: 0.002; radiusOuter: 0.003"
+            material="color: black; shader: flat">
+        </a-camera>
+
+        <a-assets>
+            <a-asset-item id ="stoelen" src="olaf/stoelHeel.obj"></a-asset-item>
+            <a-asset-item id ="sittingChar" src="olaf/sittingModelChar.obj"></a-asset-item>
+            <video id="video1" src="olaf/Oppenheimer _ New Trailer.mp4"></video>
+            <video id="video2" src="olaf/Barbie _ Main Trailer.mp4"></video>
+            <video id="video3" src="olaf/Scream _ Official Trailer (2022 Movie).mp4"></video>
+            <video id="video4" src="olaf/WINNIE-THE-POOH_ BLOOD AND HONEY (2023) _ Official Trailer _ Altitude Films.mp4"></video>
+        </a-assets>
+
+        <a-video id="videoDisplay" width="15" height="9" position="0 6.6 -2.75" visible="false"></a-video>
+
+        <a-box position="-1.5 1 -15" visible="true" color="red" class="person"></a-box>
+        <a-box position="1.5 1 -15" visible="true" color="red" class="person"></a-box>
+        <a-box position="0 1 -15" visible="true" color="red" class="person"></a-box>
+        <a-box position="3 1 -15" visible="true" color="red" class="person"></a-box>
+        <a-box position="-3 1 -15" visible="true" color="red" class="person"></a-box>
+        <a-box position="-4.5 1 -15" visible="true" color="red" class="person"></a-box>
+        <a-box position="-6 1 -15" visible="true" color="red" class="person"></a-box>
+        <a-box position="4.5 1 -15" visible="true" color="red" class="person"></a-box>
+
+        <a-box class="js--place js--clickable" color="blue" position="-8 5 19" visible="true" scale="0.7 0.7 0.7"></a-box>
+        <a-box class="js--place js--clickable" color="blue" position="0.35 5 19" visible="true"scale="0.7 0.7 0.7"></a-box>
+        <a-box class="js--sit js--clickable" color="blue" position="0.35 4.2 20"scale="0.7 0.7 0.7"></a-box>
+
+        <a-text value="1" scale="2 2 2" color="red" position="-8.2 5 19.35"></a-text>
+        <a-text value="2" scale="2 2 2" color="red" position="0 5 18.8" rotation="0 270 0"></a-text>
+        <a-text value="3" scale="2 2 2" color="red" position="0.55 4.55 20" rotation="270 180 0"></a-text>
+
+        <a-text value="<-- klik gekozen film" scale="1 1 1" color="lightgreen" position="-8.2 9 29"></a-text>
+        <a-text value="en volg de nummers" scale="1 1 1" color="lightgreen" position="-8.2 8.5 29"></a-text>
+
+
+        <a-plane rotation="0 90 0" position="-8.99 9.35 29.4" height="1.5" class="js--clickable movie" src="olaf/oppenheimer.jpeg" data-random="0.1" data-video-id="video1"></a-plane>
+        <a-plane rotation="0 90 0" position="-8.99 9.35 30.5" height="1.5" class="js--clickable movie" src="olaf/Barbie.jpg" data-random="0.4" data-video-id="video2"></a-plane>
+        <a-plane rotation="0 90 0" position="-8.99 7.75 29.4" height="1.5" class="js--clickable movie" src="olaf/scream.jpg" data-random="0.7" data-video-id="video3"></a-plane>
+        <a-plane rotation="0 90 0" position="-8.99 7.75 30.5" height="1.5" class="js--clickable movie" src="olaf/winnie the pooh.jpeg" data-random="0.9" data-video-id="video4"></a-plane>
+ 
+        
+        <a-obj-model src="#stoelen" mtl="olaf/stoelHeel.mtl" rotation="0 0 0" scale="0.5 0.5 0.5" position="-0.5 -0.5 12.5"></a-obj-model>
+        <a-obj-model src="#stoelen" mtl="olaf/stoelHeel.mtl" rotation="0 0 0" scale="0.5 0.5 0.5" position="-0.5 -1.5 10"></a-obj-model>
+        <a-obj-model src="#stoelen" mtl="olaf/stoelHeel.mtl" rotation="0 0 0" scale="0.5 0.5 0.5" position="-0.5 0.5 15"></a-obj-model>
+        <a-obj-model src="#stoelen" mtl="olaf/stoelHeel.mtl" rotation="0 0 0" scale="0.5 0.5 0.5" position="-0.5 1.5 17.5"></a-obj-model>
+        <a-obj-model src="#stoelen" mtl="olaf/stoelHeel.mtl" rotation="0 0 0" scale="0.5 0.5 0.5" position="-0.5 2.5 20"></a-obj-model>
+        <a-obj-model src="#stoelen" mtl="olaf/stoelHeel.mtl" rotation="0 0 0" scale="0.5 0.5 0.5" position="-0.5 3.5 22.5"></a-obj-model>
+        <a-obj-model src="#stoelen" mtl="olaf/stoelHeel.mtl" rotation="0 0 0" scale="0.5 0.5 0.5" position="-0.5 4.5 25"></a-obj-model>
+        <a-obj-model src="#stoelen" mtl="olaf/stoelHeel.mtl" rotation="0 0 0" scale="0.5 0.5 0.5" position="-0.5 5.5 27.5"></a-obj-model>
+        <a-obj-model src="#stoelen" mtl="olaf/stoelHeel.mtl" rotation="0 0 0" scale="0.5 0.5 0.5" position="-0.5 6.5 30"></a-obj-model>
+
+
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-2.55 5.3 29.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-1.1 5.3 29.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-4 5.3 29.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-5.45 5.3 29.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="0.35 5.3 29.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="1.80 5.3 29.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="3.25 5.3 29.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="4.70 5.3 29.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="6.15 5.3 29.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="7.60 5.3 29.9" visible="true"></a-obj-model>
+
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-1.1 4.3 27.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-2.55 4.3 27.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-4 4.3 27.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-5.45 4.3 27.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="0.35 4.3 27.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="1.80 4.3 27.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="3.25 4.3 27.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="4.70 4.3 27.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="6.15 4.3 27.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="7.60 4.3 27.4" visible="true"></a-obj-model>
+
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-1.1 3.3 24.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-2.55 3.3 24.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-4 3.3 24.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-5.45 3.3 24.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="0.35 3.3 24.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="1.80 3.3 24.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="3.25 3.3 24.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="4.70 3.3 24.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="6.15 3.3 24.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="7.60 3.3 24.9" visible="true"></a-obj-model>
+
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-1.1 2.3 22.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-2.55 2.3 22.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-4 2.3 22.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-5.45 2.3 22.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="0.35 2.3 22.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="1.80 2.3 22.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="3.25 2.3 22.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="4.70 2.3 22.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="6.15 2.3 22.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="7.60 2.3 22.4" visible="true"></a-obj-model>
+
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-1.1 1.3 19.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-2.55 1.3 19.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-4 1.3 19.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-5.45 1.3 19.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="1.80 1.3 19.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="3.25 1.3 19.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="4.70 1.3 19.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="6.15 1.3 19.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="7.60 1.3 19.9" visible="true"></a-obj-model>
+
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-1.1 0.3 17.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-2.55 0.3 17.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-4 0.3 17.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-5.45 0.3 17.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="0.35 0.3 17.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="1.80 0.3 17.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="3.25 0.3 17.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="4.70 0.3 17.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="6.15 0.3 17.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="7.60 0.3 17.4" visible="true"></a-obj-model>
+
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-1.1 -0.7 14.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-2.55 -0.7 14.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-4 -0.7 14.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-5.45 -0.7 14.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="0.35 -0.7 14.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="1.80 -0.7 14.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="3.25 -0.7 14.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="4.70 -0.7 14.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="6.15 -0.7 14.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="7.60 -0.7 14.9" visible="true"></a-obj-model>
+
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-1.1 -1.7 12.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-2.55 -1.7 12.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-4 -1.7 12.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-5.45 -1.7 12.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="0.35 -1.7 12.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="1.80 -1.7 12.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="3.25 -1.7 12.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="4.70 -1.7 12.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="6.15 -1.7 12.4" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="7.60 -1.7 12.4" visible="true"></a-obj-model>
+
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-1.1 -2.7 9.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-2.55 -2.7 9.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-4 -2.7 9.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="-5.45 -2.7 9.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="0.35 -2.7 9.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="1.80 -2.7 9.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="3.25 -2.7 9.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="4.70 -2.7 9.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="6.15 -2.7 9.9" visible="true"></a-obj-model>
+        <a-obj-model src="#sittingChar" mtl="olaf/sittingModelChar.mtl" class="person" rotation="0 180 0" scale="0.5 0.5 0.5" position="7.60 -2.7 9.9" visible="true"></a-obj-model>
+        
+
+        <a-plane position="0 -2 12" src="olaf/black-kraft-paper-textured-background.jpg" rotation="270 0 0" width="18" height="30"></a-plane>
+        <a-plane position="-9 -2 14" src="olaf/black-kraft-paper-textured-background.jpg" rotation="0 90 0" width="34" height="30"></a-plane>
+        <a-plane position="0 0 -3" src="olaf/black-kraft-paper-textured-background.jpg" rotation="0 0 0" width="18" height="30"></a-plane>
+        <a-plane position="9 -2 14" src="olaf/black-kraft-paper-textured-background.jpg" rotation="0 270 0" width="34" height="30"></a-plane>
+        <a-plane position="0 13 14" src="olaf/black-kraft-paper-textured-background.jpg" rotation="90 0 0" width="18" height="34"></a-plane>
+        <a-plane position="0 0 31" src="olaf/black-kraft-paper-textured-background.jpg" rotation="0 180 0" width="18" height="30"></a-plane>
+
+        <a-box position="0 6.5 -3" color="black" depth="0.1" height="9" width="15"></a-box>
+
+        <a-box position="0 -2 12" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="18"></a-box>
+        <a-box position="0 -1 14.5" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="18"></a-box>
+        <a-box position="0 0 17" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="18"></a-box>
+        <a-box position="0 1 19.5" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="18"></a-box>
+        <a-box position="0 2 22" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="18"></a-box>
+        <a-box position="0 3 24.5" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="18"></a-box>
+        <a-box position="0 4 27" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="18"></a-box>
+        <a-box position="0 5 30" src="olaf/black-kraft-paper-textured-background.jpg" depth="3.5" height="2" width="18"></a-box>
+
+        <a-box position="-7.75 -2.5 10.75" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="2.5"></a-box>
+        <a-box position="-7.75 -1.5 13.25" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="2.5"></a-box>
+        <a-box position="-7.75 -0.5 15.75" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="2.5"></a-box>
+        <a-box position="-7.75 0.5 18.25" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="2.5"></a-box>
+        <a-box position="-7.75 1.5 20.75" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="2.5"></a-box>
+        <a-box position="-7.75 2.5 23.25" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="2.5"></a-box>
+        <a-box position="-7.75 3.5 25.75" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="2.5"></a-box>
+        <a-box position="-7.75 4.5 28.25" src="olaf/black-kraft-paper-textured-background.jpg" depth="2.5" height="2" width="2.5"></a-box>
+
+
+
+
+
+    </a-scene>
+</body>
+</html>
